@@ -25,7 +25,17 @@ for report2 in safe_reports:
                 unsafe_reports.append(report2)
                 break
 
-
+for report3 in safe_reports:
+    for i in range(len(report3)-1):
+        new_levels = []
+        new_levels.append(report3[:i] + report3[i+1:])
+        if new_levels[i] + 1 == new_levels[i + 1] or new_levels[i] + 2 == new_levels[i + 1] or new_levels[i] + 3 == new_levels[i + 1]:
+            continue
+        elif new_levels[i] - 1 == new_levels[i + 1] or new_levels[i] - 2 == new_levels[i + 1] or new_levels[i] - 3 == new_levels[i + 1]:
+            continue
+        else:
+            unsafe_reports.append(new_levels)
+            break
 
 print(len(safe_reports)-len(unsafe_reports))
 
